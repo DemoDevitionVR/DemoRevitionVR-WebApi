@@ -11,10 +11,10 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
 {
     private readonly AppDbContext _dbContext;
     private readonly DbSet<TEntity> _dbSet;
-    public Repository(AppDbContext dbContext, DbSet<TEntity> dbSet)
+    public Repository(AppDbContext dbContext)
     {
-        _dbSet = dbSet;
         _dbContext = dbContext;
+        _dbSet = _dbContext.Set<TEntity>();
     }
 
     public async Task<TEntity> CreateAsync(TEntity entity)

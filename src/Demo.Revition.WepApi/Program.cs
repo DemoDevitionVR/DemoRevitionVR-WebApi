@@ -22,8 +22,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 builder.Services.AddServices();
-builder.Services.AddScoped<IDeviceService, DeviceService>();
-builder.Services.AddScoped<IPositionService, PositionService>();
+//builder.Services.AddScoped<IDeviceService, DeviceService>();
+//builder.Services.AddScoped<IPositionService, PositionService>();
 
 
 var app = builder.Build();

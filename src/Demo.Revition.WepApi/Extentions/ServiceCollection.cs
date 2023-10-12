@@ -1,4 +1,5 @@
-﻿using Demo.Revition.DataAccess.IRepositories;
+﻿using Demo.Revition.DataAccess.Contexts;
+using Demo.Revition.DataAccess.IRepositories;
 using Demo.Revition.DataAccess.Repositories;
 using Demo.Revition.Service.Interfaces.Devices;
 using Demo.Revition.Service.Interfaces.Positions;
@@ -14,8 +15,9 @@ public static class ServiceCollection
     {
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddAutoMapper(typeof(MappingProfile));
+        services.AddDbContext<AppDbContext>();
 
-        //services.AddScoped<IDeviceService, DeviceService>();
-        //services.AddScoped<IPositionService , PositionService>();
+        services.AddScoped<IDeviceService, DeviceService>();
+        services.AddScoped<IPositionService, PositionService>();
     }
 }

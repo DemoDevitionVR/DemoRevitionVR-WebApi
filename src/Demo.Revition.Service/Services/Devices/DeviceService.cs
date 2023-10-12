@@ -25,6 +25,7 @@ public class DeviceService : IDeviceService
             throw new DemoException(403, "This device already exists");
 
         var mappedDevice = _mapper.Map<Device>(dto);
+        mappedDevice.IsActive = true;
         await _repository.CreateAsync(mappedDevice);
         await _repository.SaveAsync();
 

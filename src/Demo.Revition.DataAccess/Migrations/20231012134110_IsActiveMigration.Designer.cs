@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Demo.Revition.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20231012103259_IsActive")]
-    partial class IsActive
+    [Migration("20231012134110_IsActiveMigration")]
+    partial class IsActiveMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace Demo.Revition.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Demo.Revition.Domain.Entities.UserPositiones.UserPositione", b =>
+            modelBuilder.Entity("Demo.Revition.Domain.Entities.Devices.Device", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace Demo.Revition.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("UserPositioneId")
+                    b.Property<long>("DeviceId")
                         .HasColumnType("bigint");
 
                     b.Property<bool>("IsActive")
@@ -50,7 +50,7 @@ namespace Demo.Revition.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("UserPositiones");
+                    b.ToTable("Devices");
                 });
 
             modelBuilder.Entity("Demo.Revition.Domain.Entities.Positions.UserPosition", b =>
@@ -64,7 +64,7 @@ namespace Demo.Revition.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("UserPositioneId")
+                    b.Property<long>("DeviceId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Head")
@@ -84,23 +84,23 @@ namespace Demo.Revition.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserPositioneId");
+                    b.HasIndex("DeviceId");
 
                     b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("Demo.Revition.Domain.Entities.Positions.UserPosition", b =>
                 {
-                    b.HasOne("Demo.Revition.Domain.Entities.UserPositiones.UserPositione", "UserPositione")
+                    b.HasOne("Demo.Revition.Domain.Entities.Devices.Device", "Device")
                         .WithMany("UserPositions")
-                        .HasForeignKey("UserPositioneId")
+                        .HasForeignKey("DeviceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("UserPositione");
+                    b.Navigation("Device");
                 });
 
-            modelBuilder.Entity("Demo.Revition.Domain.Entities.UserPositiones.UserPositione", b =>
+            modelBuilder.Entity("Demo.Revition.Domain.Entities.Devices.Device", b =>
                 {
                     b.Navigation("UserPositions");
                 });
