@@ -18,4 +18,8 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.11" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Demo.Revition.Domain\Demo.Revition.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

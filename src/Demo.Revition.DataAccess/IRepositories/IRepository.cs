@@ -1,8 +1,9 @@
 ﻿using System.Linq.Expressions;
+using Demo.Revition.Domain.Commons;
 
 namespace Demo.Revition.DataAccess.IRepositories;
 
-public interface IRepository<TEntity> where TEntity : class
+public interface IRepository<TEntity> where TEntity : Auditable
 {
     ValueTask<TEntity> CreateAsync(TEntity entity);
     TEntity Update(TEntity entity);
