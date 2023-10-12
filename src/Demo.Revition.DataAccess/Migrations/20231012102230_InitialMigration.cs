@@ -12,19 +12,19 @@ namespace Demo.Revition.DataAccess.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "UserPositiones",
+                name: "Devices",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserPositioneId = table.Column<long>(type: "bigint", nullable: false),
+                    DeviceId = table.Column<long>(type: "bigint", nullable: false),
                     Name = table.Column<string>(type: "text", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_UserPositiones", x => x.Id);
+                    table.PrimaryKey("PK_Devices", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -33,7 +33,7 @@ namespace Demo.Revition.DataAccess.Migrations
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserPositioneId = table.Column<long>(type: "bigint", nullable: false),
+                    DeviceId = table.Column<long>(type: "bigint", nullable: false),
                     Main = table.Column<string>(type: "text", nullable: true),
                     Head = table.Column<string>(type: "text", nullable: true),
                     LeftHand = table.Column<string>(type: "text", nullable: true),
@@ -45,17 +45,17 @@ namespace Demo.Revition.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_Positions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Positions_UserPositiones_UserPositioneId",
-                        column: x => x.UserPositioneId,
-                        principalTable: "UserPositiones",
+                        name: "FK_Positions_Devices_DeviceId",
+                        column: x => x.DeviceId,
+                        principalTable: "Devices",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Positions_UserPositioneId",
+                name: "IX_Positions_DeviceId",
                 table: "Positions",
-                column: "UserPositioneId");
+                column: "DeviceId");
         }
 
         /// <inheritdoc />
@@ -65,7 +65,7 @@ namespace Demo.Revition.DataAccess.Migrations
                 name: "Positions");
 
             migrationBuilder.DropTable(
-                name: "UserPositiones");
+                name: "Devices");
         }
     }
 }

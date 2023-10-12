@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Demo.Revition.Service.DTOs.Devices;
-using Demo.Revition.Service.DTOs.Positions;
 using Demo.Revition.Domain.Entities.Devices;
 using Demo.Revition.Domain.Entities.Positions;
+using Demo.Revition.Service.DTOs.Devices;
+using Demo.Revition.Service.DTOs.Positions;
 
 namespace Demo.Revition.Service.Mappers;
 
