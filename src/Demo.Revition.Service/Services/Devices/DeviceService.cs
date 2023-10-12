@@ -6,7 +6,7 @@ using Demo.Revition.Service.Excaptions;
 using Demo.Revition.Service.Interfaces.Devices;
 using Microsoft.EntityFrameworkCore;
 
-namespace Demo.Revition.Service.Services;
+namespace Demo.Revition.Service.Services.Devices;
 
 public class DeviceService : IDeviceService
 {
