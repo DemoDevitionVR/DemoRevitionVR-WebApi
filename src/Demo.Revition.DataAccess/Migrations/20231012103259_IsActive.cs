@@ -12,7 +12,7 @@ namespace Demo.Revition.DataAccess.Migrations
         {
             migrationBuilder.AddColumn<bool>(
                 name: "IsActive",
-                table: "Devices",
+                table: "UserPositiones",
                 type: "boolean",
                 nullable: false,
                 defaultValue: false);
@@ -23,7 +23,7 @@ namespace Demo.Revition.DataAccess.Migrations
         {
             migrationBuilder.DropColumn(
                 name: "IsActive",
-                table: "Devices");
+                table: "UserPositiones");
         }
     }
 }

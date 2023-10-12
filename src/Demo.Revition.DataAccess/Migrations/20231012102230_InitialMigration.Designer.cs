@@ -25,7 +25,7 @@ namespace Demo.Revition.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("Demo.Revition.Domain.Entities.Devices.Device", b =>
+            modelBuilder.Entity("Demo.Revition.Domain.Entities.UserPositiones.UserPositione", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,7 +36,7 @@ namespace Demo.Revition.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("DeviceId")
+                    b.Property<long>("UserPositioneId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Name")
@@ -47,7 +47,7 @@ namespace Demo.Revition.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Devices");
+                    b.ToTable("UserPositiones");
                 });
 
             modelBuilder.Entity("Demo.Revition.Domain.Entities.Positions.UserPosition", b =>
@@ -61,7 +61,7 @@ namespace Demo.Revition.DataAccess.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<long>("DeviceId")
+                    b.Property<long>("UserPositioneId")
                         .HasColumnType("bigint");
 
                     b.Property<string>("Head")
@@ -81,23 +81,23 @@ namespace Demo.Revition.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DeviceId");
+                    b.HasIndex("UserPositioneId");
 
                     b.ToTable("Positions");
                 });
 
             modelBuilder.Entity("Demo.Revition.Domain.Entities.Positions.UserPosition", b =>
                 {
-                    b.HasOne("Demo.Revition.Domain.Entities.Devices.Device", "Device")
+                    b.HasOne("Demo.Revition.Domain.Entities.UserPositiones.UserPositione", "UserPositione")
                         .WithMany("UserPositions")
-                        .HasForeignKey("DeviceId")
+                        .HasForeignKey("UserPositioneId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Device");
+                    b.Navigation("UserPositione");
                 });
 
-            modelBuilder.Entity("Demo.Revition.Domain.Entities.Devices.Device", b =>
+            modelBuilder.Entity("Demo.Revition.Domain.Entities.UserPositiones.UserPositione", b =>
                 {
                     b.Navigation("UserPositions");
                 });

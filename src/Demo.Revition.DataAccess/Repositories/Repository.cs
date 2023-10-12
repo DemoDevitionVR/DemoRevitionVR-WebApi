@@ -1,9 +1,9 @@
-﻿using System.Linq.Expressions;
+﻿using Demo.Revition.DataAccess.Contexts;
+using Demo.Revition.DataAccess.IRepositories;
 using Demo.Revition.Domain.Commons;
 using Microsoft.EntityFrameworkCore;
-using Demo.Revition.DataAccess.Contexts;
-using Demo.Revition.DataAccess.IRepositories;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System.Linq.Expressions;
 
 namespace Demo.Revition.DataAccess.Repositories;
 
@@ -38,7 +38,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
 
     public async Task<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression, string[] includes = null)
     {
-        IQueryable<TEntity> entities = expression == null ? _dbSet.AsQueryable() : 
+        IQueryable<TEntity> entities = expression == null ? _dbSet.AsQueryable() :
             _dbSet.Where(expression).AsQueryable();
 
         if (includes is not null)

@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace Demo.Revition.Domain.Commons;
+﻿namespace Demo.Revition.Domain.Commons;
 
 public abstract class Auditable
 {
