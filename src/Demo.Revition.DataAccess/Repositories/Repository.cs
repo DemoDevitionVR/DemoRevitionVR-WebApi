@@ -17,15 +17,17 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
         _dbContext = dbContext;
     }
 
-    public async ValueTask<TEntity> CreateAsync(TEntity entity)
+    public async Task<TEntity> CreateAsync(TEntity entity)
     {
         EntityEntry<TEntity> entry = await _dbSet.AddAsync(entity);
+
         return entry.Entity;
     }
 
     public TEntity Update(TEntity entity)
     {
         EntityEntry<TEntity> entry = _dbContext.Update(entity);
+
         return entry.Entity;
     }
 
@@ -34,9 +36,10 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
         _dbContext.Remove(entity);
     }
 
-    public async ValueTask<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression, string[] includes = null)
+    public async Task<TEntity> SelectAsync(Expression<Func<TEntity, bool>> expression, string[] includes = null)
     {
-        IQueryable<TEntity> entities = expression == null ? _dbSet.AsQueryable() : _dbSet.Where(expression).AsQueryable();
+        IQueryable<TEntity> entities = expression == null ? _dbSet.AsQueryable() : 
+            _dbSet.Where(expression).AsQueryable();
 
         if (includes is not null)
             foreach (var include in includes)
@@ -45,7 +48,8 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
         return await entities.FirstOrDefaultAsync();
     }
 
-    public IQueryable<TEntity> SelectAll(Expression<Func<TEntity, bool>> expression = null, bool isTracking = false, string[] includes = null)
+    public IQueryable<TEntity> SelectAll(Expression<Func<TEntity, bool>> expression = null,
+        bool isTracking = false, string[] includes = null)
     {
         IQueryable<TEntity> entities = expression == null ? _dbSet.AsQueryable()
             : this._dbSet.Where(expression).AsQueryable();
@@ -59,6 +63,6 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
         return entities;
     }
 
-    public async ValueTask<bool> SaveAsync()
+    public async Task<bool> SaveAsync()
         => await _dbContext.SaveChangesAsync() >= 0;
 }
