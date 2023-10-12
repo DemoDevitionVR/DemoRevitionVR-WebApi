@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Demo.Revition.DataAccess.IRepositories;
+using Demo.Revition.Domain.Entities.Devices;
 using Demo.Revition.Domain.Entities.Positions;
 using Demo.Revition.Service.DTOs.Positions;
 using Demo.Revition.Service.Excaptions;
@@ -12,15 +13,26 @@ public class PositionService : IPositionService
 {
     private IMapper _mapper;
     private IRepository<UserPosition> _repository;
+    private IRepository<Device> _deviceRepository;
 
-    public PositionService(IRepository<UserPosition> repository, IMapper mapper)
+    public PositionService(
+        IRepository<UserPosition> repository, 
+        IMapper mapper,
+        IRepository<Device> deviseRepository)
     {
         this._mapper = mapper;
         this._repository = repository;
+        this._deviceRepository = deviseRepository;
     }
     public async Task<UserPositionResultDto> CreateAsync(UserPositionCreationDto dto)
     {
+        var dbResult = await _deviceRepository.SelectAsync(x => x.Id.Equals(dto.DeviceId), includes: new[] { "Devices" });
+
+        if (dbResult is null)
+            throw new DemoException(404, "Not found Device");
+
         var userPosition = _mapper.Map<UserPosition>(dto);
+        userPosition.Device = dbResult;
         await _repository.CreateAsync(userPosition);
         await _repository.SaveAsync();
 
@@ -64,10 +76,16 @@ public class PositionService : IPositionService
         if (dbResult is null)
             throw new DemoException(404, "Not found User Position");
 
-        var usrposition = _mapper.Map(dto, dbResult);
-        _repository.Update(usrposition);
+        var dbDevice = await _deviceRepository.SelectAsync(x => x.Id.Equals(dto.DeviceId), includes: new[] { "Devices" });
+
+        if (dbDevice is null)
+            throw new DemoException(404, "Not found Device");
+
+        var userPosition = _mapper.Map(dto, dbResult);
+        userPosition.Device = dbDevice;
+        _repository.Update(userPosition);
         await _repository.SaveAsync();
 
-        return _mapper.Map<UserPositionResultDto>(usrposition);
+        return _mapper.Map<UserPositionResultDto>(userPosition);
     }
 }
