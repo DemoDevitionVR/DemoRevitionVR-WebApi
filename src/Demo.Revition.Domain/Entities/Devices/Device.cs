@@ -1,11 +1,11 @@
 ﻿using Demo.Revition.Domain.Commons;
-using System.ComponentModel.DataAnnotations;
+using Demo.Revition.Domain.Entities.Positions;
 
 namespace Demo.Revition.Domain.Entities.Devices;
 
 public class Device : Auditable
 {
-    [Key]
     public long DeviceId { get; set; }
     public string? Name { get; set; }
+    public ICollection<UserPosition> UserPositions { get; set; }
 }
