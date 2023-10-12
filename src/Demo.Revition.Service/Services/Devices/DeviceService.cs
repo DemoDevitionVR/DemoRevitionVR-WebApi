@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Demo.Revition.DataAccess.IRepositories;
-using Demo.Revition.Domain.Entities.Devices;
-using Demo.Revition.Service.DTOs.Devices;
-using Demo.Revition.Service.Excaptions;
-using Demo.Revition.Service.Interfaces.Devices;
 using Microsoft.EntityFrameworkCore;
+using Demo.Revition.Service.Excaptions;
+using Demo.Revition.Service.DTOs.Devices;
+using Demo.Revition.Domain.Entities.Devices;
+using Demo.Revition.DataAccess.IRepositories;
+using Demo.Revition.Service.Interfaces.Devices;
 
 namespace Demo.Revition.Service.Services.Devices;
 

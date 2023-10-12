@@ -9,5 +9,5 @@ public class UserPositionResultDto
     public string Head { get; set; }
     public string LeftHand { get; set; }
     public string RightHand { get; set; }
-    public DeviceResultDto Devices { get; set; }
+    public DeviceResultDto Device { get; set; }
 }
