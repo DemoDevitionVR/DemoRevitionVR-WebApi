@@ -41,7 +41,7 @@ public class PositionsController : BaseController
             Data = await _positionService.DeleteAsync(id)
         });
 
-    [HttpGet("get/long:id")]
+    [HttpGet("get/long:{id}")]
     public async Task<IActionResult> GetByIdAsync(long id)
         => Ok(new Response
         {

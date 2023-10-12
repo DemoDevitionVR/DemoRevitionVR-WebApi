@@ -12,12 +12,12 @@ namespace Demo.Revition.Service.Services.Positions;
 public class PositionService : IPositionService
 {
     private IMapper _mapper;
-    private IRepository<UserPosition> _repository;
     private IRepository<Device> _deviceRepository;
+    private IRepository<UserPosition> _repository;
 
     public PositionService(
-        IRepository<UserPosition> repository, 
         IMapper mapper,
+        IRepository<UserPosition> repository, 
         IRepository<Device> deviseRepository)
     {
         this._mapper = mapper;
@@ -26,7 +26,7 @@ public class PositionService : IPositionService
     }
     public async Task<UserPositionResultDto> CreateAsync(UserPositionCreationDto dto)
     {
-        var dbResult = await _deviceRepository.SelectAsync(x => x.Id.Equals(dto.DeviceId), includes: new[] { "Devices" });
+        var dbResult = await _deviceRepository.SelectAsync(x => x.Id.Equals(dto.DeviceId));
 
         if (dbResult is null)
             throw new DemoException(404, "Not found Device");
@@ -61,7 +61,7 @@ public class PositionService : IPositionService
 
     public async Task<UserPositionResultDto> GetByIdAsync(long id)
     {
-        var dbResult = await _repository.SelectAsync(id => id.Id.Equals(id));
+        var dbResult = await _repository.SelectAsync(i => i.Id.Equals(id));
 
         if (dbResult is null)
             throw new DemoException(404, "Not found User Position");
@@ -71,12 +71,12 @@ public class PositionService : IPositionService
 
     public async Task<UserPositionResultDto> UpdateAsync(long id, UserPositionUpdateDto dto)
     {
-        var dbResult = await _repository.SelectAsync(id => id.Equals(id));
+        var dbResult = await _repository.SelectAsync(i => i.Equals(id));
 
         if (dbResult is null)
             throw new DemoException(404, "Not found User Position");
 
-        var dbDevice = await _deviceRepository.SelectAsync(x => x.Id.Equals(dto.DeviceId), includes: new[] { "Devices" });
+        var dbDevice = await _deviceRepository.SelectAsync(x => x.Id.Equals(dto.DeviceId));
 
         if (dbDevice is null)
             throw new DemoException(404, "Not found Device");
