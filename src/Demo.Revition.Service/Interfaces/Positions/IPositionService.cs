@@ -1,13 +1,12 @@
-﻿using Demo.Revition.Service.DTOs.UserPositiones;
+﻿using Demo.Revition.Service.DTOs.Positions;
 
-namespace Demo.Revition.Service.Interfaces.Positions
+namespace Demo.Revition.Service.Interfaces.Positions;
+
+public interface IPositionService
 {
-    public interface IPositionService
-    {
-        Task<UserPositioneResultDto> CreateAsync(UserPositioneCreationDto dto);
-        Task<UserPositioneResultDto> UpdateAsync(UserPositioneUpdateDto dto);
-        Task<bool> DeleteAsync(long id);
-        Task<UserPositioneResultDto> GetByIdAsync(long id);
-        Task<IEnumerable<UserPositioneResultDto>> GetAllAsync();
-    }
+    Task<UserPositionResultDto> CreateAsync(UserPositionCreationDto dto);
+    Task<UserPositionResultDto> UpdateAsync(UserPositionUpdateDto dto);
+    Task<bool> DeleteAsync(long id);
+    Task<UserPositionResultDto> GetByIdAsync(long id);
+    Task<IEnumerable<UserPositionResultDto>> GetAllAsync();
 }
