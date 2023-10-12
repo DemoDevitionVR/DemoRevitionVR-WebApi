@@ -1,7 +1,7 @@
-﻿namespace Demo.Revition.Service.DTOs.UserPositiones;
+﻿namespace Demo.Revition.Service.DTOs.Devices;
 
-public class UserPositioneCreationDto
+public class DeviceCreationDto
 {
-    public long UserPositioneId { get; set; }
+    public long DeviceId { get; set; }
     public string Name { get; set; }
 }
