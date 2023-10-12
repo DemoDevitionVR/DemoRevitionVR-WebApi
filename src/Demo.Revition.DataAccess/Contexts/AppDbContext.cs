@@ -1,5 +1,5 @@
-﻿using Demo.Revition.Domain.Entities.Positions;
-using Demo.Revition.Domain.Entities.Devices;
+﻿using Demo.Revition.Domain.Entities.Devices;
+using Demo.Revition.Domain.Entities.Positions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Demo.Revition.DataAccess.Contexts;

@@ -1,7 +1,6 @@
 ﻿using Demo.Revition.Service.DTOs.Devices;
 using Demo.Revition.Service.Interfaces.Devices;
 using Demo.Revition.WepApi.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Revition.WepApi.Controllers;

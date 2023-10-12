@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using Demo.Revition.Service.Excaptions;
-using Demo.Revition.Service.DTOs.Devices;
-using Demo.Revition.Domain.Entities.Devices;
 using Demo.Revition.DataAccess.IRepositories;
+using Demo.Revition.Domain.Entities.Devices;
+using Demo.Revition.Service.DTOs.Devices;
+using Demo.Revition.Service.Excaptions;
 using Demo.Revition.Service.Interfaces.Devices;
+using Microsoft.EntityFrameworkCore;
 
 namespace Demo.Revition.Service.Services;
 
@@ -67,6 +67,6 @@ public class DeviceService : IDeviceService
     public async Task<IEnumerable<DeviceResultDto>> GetAllAsync()
     {
         var devices = await _repository.SelectAll().ToListAsync();
-        return _mapper.Map<IEnumerable<DeviceResultDto>>(devices);  
+        return _mapper.Map<IEnumerable<DeviceResultDto>>(devices);
     }
 }
