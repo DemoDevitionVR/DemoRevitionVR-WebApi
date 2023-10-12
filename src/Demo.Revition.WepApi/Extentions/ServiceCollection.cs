@@ -1,8 +1,10 @@
-﻿using Demo.Revition.Service.Mappers;
-using Demo.Revition.Service.Services;
+﻿using Demo.Revition.DataAccess.IRepositories;
 using Demo.Revition.DataAccess.Repositories;
-using Demo.Revition.DataAccess.IRepositories;
 using Demo.Revition.Service.Interfaces.Devices;
+using Demo.Revition.Service.Interfaces.Positions;
+using Demo.Revition.Service.Mappers;
+using Demo.Revition.Service.Services.Devices;
+using Demo.Revition.Service.Services.Positions;
 
 namespace Demo.Revition.WepApi.Extentions;
 
@@ -13,6 +15,7 @@ public static class ServiceCollection
         services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
         services.AddAutoMapper(typeof(MappingProfile));
 
-        services.AddScoped<IDeviceService, DeviceService>();
+        //services.AddScoped<IDeviceService, DeviceService>();
+        //services.AddScoped<IPositionService , PositionService>();
     }
 }
