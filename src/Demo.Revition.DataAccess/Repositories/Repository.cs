@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using Demo.Revition.Domain.Commons;
 using Microsoft.EntityFrameworkCore;
 using Demo.Revition.DataAccess.Contexts;
 using Demo.Revition.DataAccess.IRepositories;
@@ -6,7 +7,7 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace Demo.Revition.DataAccess.Repositories;
 
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditable
 {
     private readonly AppDbContext _dbContext;
     private readonly DbSet<TEntity> _dbSet;
