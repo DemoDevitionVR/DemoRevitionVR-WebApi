@@ -1,8 +1,7 @@
-﻿using Demo.Revition.Service.DTOs.Devices;
-using Demo.Revition.Service.Interfaces.Devices;
+﻿using Microsoft.AspNetCore.Mvc;
 using Demo.Revition.WepApi.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
+using Demo.Revition.Service.DTOs.Devices;
+using Demo.Revition.Service.Interfaces.Devices;
 
 namespace Demo.Revition.WepApi.Controllers;
 
@@ -22,4 +21,40 @@ public class DevicesController : BaseController
             Message = "Success",
             Data = await _deviceService.CreateAsync(dto)
         });
+
+    [HttpPut("update")]
+    public async Task<IActionResult> PutAsync(long id, DeviceUpdateDto dto)
+        => Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Success",
+            Data = await _deviceService.UpdateAsync(id, dto)
+        });
+
+    [HttpDelete("delete")]
+    public async Task<IActionResult> DeleteAsync(long id)
+        => Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Success",
+            Data = await _deviceService.DeleteAsync(id)
+        });
+
+    [HttpGet("get/long:id")]
+    public async Task<IActionResult> GetByIdAsync(long id)
+        => Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Successs",
+            Data = await _deviceService.GetByIdAsync(id)
+        });
+
+    [HttpGet("get-all")]
+    public async Task<IActionResult> GetAllAsync()
+       => Ok(new Response
+       {
+           StatusCode = 200,
+           Message = "Successs",
+           Data = await _deviceService.GetAllAsync()
+       });
 }
