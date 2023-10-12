@@ -40,7 +40,7 @@ public class DevicesController : BaseController
             Data = await _deviceService.DeleteAsync(id)
         });
 
-    [HttpGet("get/long:id")]
+    [HttpGet("get/long:{id}")]
     public async Task<IActionResult> GetByIdAsync(long id)
         => Ok(new Response
         {
