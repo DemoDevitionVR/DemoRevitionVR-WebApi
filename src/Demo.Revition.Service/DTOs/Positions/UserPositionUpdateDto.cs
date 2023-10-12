@@ -6,5 +6,5 @@ public class UserPositionUpdateDto
     public string Head { get; set; }
     public string LeftHand { get; set; }
     public string RightHand { get; set; }
-    public long DeviceId { get; set; }
+    public long UserPositioneId { get; set; }
 }

@@ -1,4 +1,4 @@
-﻿using Demo.Revition.Service.DTOs.Devices;
+﻿using Demo.Revition.Service.DTOs.UserPositiones;
 
 namespace Demo.Revition.Service.DTOs.Positions;
 
@@ -9,5 +9,5 @@ public class UserPositionResultDto
     public string Head { get; set; }
     public string LeftHand { get; set; }
     public string RightHand { get; set; }
-    public DeviceResultDto Device { get; set; }
+    public UserPositioneResultDto UserPositione { get; set; }
 }

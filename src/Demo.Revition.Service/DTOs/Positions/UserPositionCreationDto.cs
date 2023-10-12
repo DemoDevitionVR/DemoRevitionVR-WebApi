@@ -2,7 +2,7 @@
 
 public class UserPositionCreationDto
 {
-    public long DeviceId { get; set; }
+    public long UserPositioneId { get; set; }
     public string Main { get; set; }
     public string Head { get; set; }
     public string LeftHand { get; set; }
