@@ -1,4 +1,8 @@
 using Demo.Revition.DataAccess.Contexts;
+using Demo.Revition.Service.Interfaces.Devices;
+using Demo.Revition.Service.Interfaces.Positions;
+using Demo.Revition.Service.Services.Devices;
+using Demo.Revition.Service.Services.Positions;
 using Demo.Revition.WepApi.Extentions;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +22,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 builder.Services.AddServices();
+builder.Services.AddScoped<IDeviceService, DeviceService>();
+builder.Services.AddScoped<IPositionService, PositionService>();
 
 
 var app = builder.Build();
