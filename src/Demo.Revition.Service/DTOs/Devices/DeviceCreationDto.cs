@@ -2,6 +2,6 @@
 
 public class DeviceCreationDto
 {
-    public long UserPositioneId { get; set; }
+    public long DeviceId { get; set; }
     public string Name { get; set; }
 }
