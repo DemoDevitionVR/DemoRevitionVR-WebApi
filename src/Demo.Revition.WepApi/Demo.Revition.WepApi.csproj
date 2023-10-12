@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Demo.Revition.DataAccess\Demo.Revition.DataAccess.csproj" />
+    <ProjectReference Include="..\Demo.Revition.Service\Demo.Revition.Service.csproj" />
   </ItemGroup>
 
 </Project>

@@ -19,6 +19,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
 
     public async Task<TEntity> CreateAsync(TEntity entity)
     {
+        entity.CreatedAt = DateTime.UtcNow;
         EntityEntry<TEntity> entry = await _dbSet.AddAsync(entity);
 
         return entry.Entity;
@@ -26,6 +27,7 @@ public class Repository<TEntity> : IRepository<TEntity> where TEntity : Auditabl
 
     public TEntity Update(TEntity entity)
     {
+        entity.UpdatedAt = DateTime.UtcNow;
         EntityEntry<TEntity> entry = _dbContext.Update(entity);
 
         return entry.Entity;
