@@ -1,8 +1,7 @@
-﻿using Demo.Revition.Service.DTOs.Devices;
+﻿using Microsoft.AspNetCore.Mvc;
+using Demo.Revition.WepApi.Models;
 using Demo.Revition.Service.DTOs.Positions;
 using Demo.Revition.Service.Interfaces.Positions;
-using Demo.Revition.WepApi.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Demo.Revition.WepApi.Controllers;
 
@@ -32,7 +31,7 @@ public class PositionsController : BaseController
             Data = await _positionService.UpdateAsync(id, dto)
         });
 
-    [HttpDelete("delete")]
+    [HttpDelete("delete/{id:long}")]
     public async Task<IActionResult> DeleteAsync(long id)
         => Ok(new Response
         {
@@ -41,7 +40,7 @@ public class PositionsController : BaseController
             Data = await _positionService.DeleteAsync(id)
         });
 
-    [HttpGet("get/long:{id}")]
+    [HttpGet("get/{id:long}")]
     public async Task<IActionResult> GetByIdAsync(long id)
         => Ok(new Response
         {
@@ -49,6 +48,15 @@ public class PositionsController : BaseController
             Message = "Successs",
             Data = await _positionService.GetByIdAsync(id)
         });
+
+    //[HttpGet("get-by-position/{id:long}")]
+    //public async Task<IActionResult> GetByPositionIdAsync(long id)
+    //    => Ok(new Response
+    //    {
+    //        StatusCode = 200,
+    //        Message = "Successs",
+    //        Data = await _positionService.GetByUserPositionIdAsync(id)
+    //    });
 
     [HttpGet("get-all")]
     public async Task<IActionResult> GetAllAsync()

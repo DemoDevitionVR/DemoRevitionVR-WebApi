@@ -1,10 +1,6 @@
-using Demo.Revition.DataAccess.Contexts;
-using Demo.Revition.Service.Interfaces.Devices;
-using Demo.Revition.Service.Interfaces.Positions;
-using Demo.Revition.Service.Services.Devices;
-using Demo.Revition.Service.Services.Positions;
-using Demo.Revition.WepApi.Extentions;
 using Microsoft.EntityFrameworkCore;
+using Demo.Revition.WepApi.Extentions;
+using Demo.Revition.DataAccess.Contexts;
 
 var builder = WebApplication.CreateBuilder(args);
 
