@@ -44,6 +44,19 @@ public class DeviceService : IDeviceService
 
         return _mapper.Map<DeviceResultDto>(mappedDevice);
     }
+    public async Task<DeviceResultDto> UpdateIsActiveAsync(long id, bool isActive)
+    {
+        var existDevice = await _repository.SelectAsync(d => d.Id.Equals(id));
+        if (existDevice is null)
+            throw new DemoException(404, "This device is not found");
+
+        existDevice.Id = id;
+        existDevice.IsActive = isActive;
+        _repository.Update(existDevice);
+        await _repository.SaveAsync();
+
+        return _mapper.Map<DeviceResultDto>(existDevice);
+    }
 
     public async Task<bool> DeleteAsync(long id)
     {

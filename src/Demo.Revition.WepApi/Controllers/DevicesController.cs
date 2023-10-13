@@ -31,6 +31,15 @@ public class DevicesController : BaseController
             Data = await _deviceService.UpdateAsync(id, dto)
         });
 
+    [HttpPut("update-isActive")]
+    public async Task<IActionResult> PutIsActiveAsync(long id, bool isActive)
+        => Ok(new Response
+        {
+            StatusCode = 200,
+            Message = "Success",
+            Data = await _deviceService.UpdateIsActiveAsync(id, isActive)
+        });
+
     [HttpDelete("delete/{id:long}")]
     public async Task<IActionResult> DeleteAsync(long id)
         => Ok(new Response
